@@ -76,65 +76,67 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="external\lib\x64\LICENSE.zlib.txt">
+    <None Include="external\lib\x64\libjpeg-9.dll">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.webp.txt">
+    </None>
+    <None Include="external\lib\x64\libpng16-16.dll">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.tiff.txt">
+    </None>
+    <None Include="external\lib\x64\libtiff-5.dll">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.png.txt">
+    </None>
+    <None Include="external\lib\x64\libwebp-7.dll">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.jpeg.txt">
+    </None>
+    <None Include="external\lib\x64\zlib1.dll">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libwebp-7.dll">
+    </None>
+    <None Include="external\lib\x86\libjpeg-9.dll">
+      <Filter>x86</Filter>
+    </None>
+    <None Include="external\lib\x86\libpng16-16.dll">
+      <Filter>x86</Filter>
+    </None>
+    <None Include="external\lib\x86\libtiff-5.dll">
+      <Filter>x86</Filter>
+    </None>
+    <None Include="external\lib\x86\libwebp-7.dll">
+      <Filter>x86</Filter>
+    </None>
+    <None Include="external\lib\x86\zlib1.dll">
+      <Filter>x86</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="external\lib\x64\LICENSE.jpeg.txt">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libtiff-5.dll">
+    </Text>
+    <Text Include="external\lib\x64\LICENSE.png.txt">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libpng16-16.dll">
+    </Text>
+    <Text Include="external\lib\x64\LICENSE.tiff.txt">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\zlib1.dll">
+    </Text>
+    <Text Include="external\lib\x64\LICENSE.webp.txt">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libjpeg-9.dll">
+    </Text>
+    <Text Include="external\lib\x64\LICENSE.zlib.txt">
       <Filter>x64</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.zlib.txt">
+    </Text>
+    <Text Include="external\lib\x86\LICENSE.jpeg.txt">
       <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.webp.txt">
+    </Text>
+    <Text Include="external\lib\x86\LICENSE.png.txt">
       <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.tiff.txt">
+    </Text>
+    <Text Include="external\lib\x86\LICENSE.tiff.txt">
       <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.png.txt">
+    </Text>
+    <Text Include="external\lib\x86\LICENSE.webp.txt">
       <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.jpeg.txt">
+    </Text>
+    <Text Include="external\lib\x86\LICENSE.zlib.txt">
       <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libwebp-7.dll">
-      <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libtiff-5.dll">
-      <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libpng16-16.dll">
-      <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\zlib1.dll">
-      <Filter>x86</Filter>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libjpeg-9.dll">
-      <Filter>x86</Filter>
-    </CustomBuild>
+    </Text>
   </ItemGroup>
 </Project>

@@ -63,14 +63,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)build\$(ProjectName)\temp\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)build\$(ProjectName)\temp\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)build\$(ProjectName)\temp\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)build\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)build\$(ProjectName)\temp\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
@@ -85,19 +85,19 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(SolutionDir)build\SDL2\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>$(SolutionDir)build\SDL2\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(SolutionDir)build\SDL2\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>$(SolutionDir)build\SDL2\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -128,6 +128,9 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake />
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName).dll" "$(SolutionDir)\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -157,6 +160,9 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake />
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName).dll" "$(SolutionDir)\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -183,6 +189,9 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake />
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName).dll" "$(SolutionDir)\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -209,6 +218,9 @@
       <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake />
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName).dll" "$(SolutionDir)\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\IMG.c">
@@ -367,181 +379,33 @@
     <ClInclude Include="..\SDL_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="external\lib\x64\libjpeg-9.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libpng16-16.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libtiff-5.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\libwebp-7.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.jpeg.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.png.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.tiff.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.webp.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\LICENSE.zlib.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x64\zlib1.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libjpeg-9.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libpng16-16.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libtiff-5.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\libwebp-7.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.jpeg.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.png.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.tiff.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.webp.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\LICENSE.zlib.txt">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="external\lib\x86\zlib1.dll">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\SDL2-2.0.12\VisualC\SDL\SDL.vcxproj">
       <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="external\lib\x64\libjpeg-9.dll" />
+    <None Include="external\lib\x64\libpng16-16.dll" />
+    <None Include="external\lib\x64\libtiff-5.dll" />
+    <None Include="external\lib\x64\libwebp-7.dll" />
+    <None Include="external\lib\x64\zlib1.dll" />
+    <None Include="external\lib\x86\libjpeg-9.dll" />
+    <None Include="external\lib\x86\libpng16-16.dll" />
+    <None Include="external\lib\x86\libtiff-5.dll" />
+    <None Include="external\lib\x86\libwebp-7.dll" />
+    <None Include="external\lib\x86\zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="external\lib\x64\LICENSE.jpeg.txt" />
+    <Text Include="external\lib\x64\LICENSE.png.txt" />
+    <Text Include="external\lib\x64\LICENSE.tiff.txt" />
+    <Text Include="external\lib\x64\LICENSE.webp.txt" />
+    <Text Include="external\lib\x64\LICENSE.zlib.txt" />
+    <Text Include="external\lib\x86\LICENSE.jpeg.txt" />
+    <Text Include="external\lib\x86\LICENSE.png.txt" />
+    <Text Include="external\lib\x86\LICENSE.tiff.txt" />
+    <Text Include="external\lib\x86\LICENSE.webp.txt" />
+    <Text Include="external\lib\x86\LICENSE.zlib.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
