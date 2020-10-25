@@ -81,21 +81,21 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\</OutDir>
     <IntDir>$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)\include;$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(SolutionDir)\3rdparty\SDL2_image-2.0.5;$(SolutionDir)\3rdparty\SDL2_mixer-2.0.4;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\include;$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(SolutionDir)\3rdparty\SDL2_image-2.0.5;$(SolutionDir)\3rdparty\SDL2_mixer-2.0.4;$(SolutionDir)\3rdparty\SDL2_ttf-2.0.15;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\</OutDir>
     <IntDir>$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)\include;$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(SolutionDir)\3rdparty\SDL2_image-2.0.5;$(SolutionDir)\3rdparty\SDL2_mixer-2.0.4;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\include;$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(SolutionDir)\3rdparty\SDL2_image-2.0.5;$(SolutionDir)\3rdparty\SDL2_mixer-2.0.4;$(SolutionDir)\3rdparty\SDL2_ttf-2.0.15;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\</OutDir>
     <IntDir>$(SolutionDir)build\temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)\include;$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(SolutionDir)\3rdparty\SDL2_image-2.0.5;$(SolutionDir)\3rdparty\SDL2_mixer-2.0.4;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\include;$(SolutionDir)\3rdparty\SDL2-2.0.12\include;$(SolutionDir)\3rdparty\SDL2_image-2.0.5;$(SolutionDir)\3rdparty\SDL2_mixer-2.0.4;$(SolutionDir)\3rdparty\SDL2_ttf-2.0.15;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -177,13 +177,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\3rdparty.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="res\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc" />
+    <Image Include="res\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="spook.ico" />
+    <ResourceCompile Include="res\Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

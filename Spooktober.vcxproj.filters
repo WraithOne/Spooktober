@@ -23,18 +23,18 @@
     <ClInclude Include="include\3rdparty.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Headerdateien</Filter>
+    <ClInclude Include="res\resource.h">
+      <Filter>Ressourcendateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc">
-      <Filter>Ressourcendateien</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="spook.ico">
+    <Image Include="res\icon1.ico">
       <Filter>Ressourcendateien</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\Resource.rc">
+      <Filter>Ressourcendateien</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
