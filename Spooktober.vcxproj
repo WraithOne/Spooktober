@@ -173,10 +173,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Intro.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\3rdparty.h" />
+    <ClInclude Include="include\Intro.h" />
+    <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="res\resource.h" />
   </ItemGroup>
   <ItemGroup>

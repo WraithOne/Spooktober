@@ -1,6 +1,7 @@
 //Using SDL and standard IO
-#include<3rdparty.h>
-#include <stdio.h>
+#include <3rdparty.h>
+#include <SceneManager.h>
+#include <Intro.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1080;
@@ -23,7 +24,11 @@ int main(int argc, char** argv)
 
 	SDL_bool paused = SDL_FALSE, running = SDL_TRUE;
 	Uint64 nextFrame = SDL_GetPerformanceCounter();
-	
+	float elapsedTime = 0;
+
+	// SceneManager
+	SceneManager* manager = new SceneManager();
+	manager->addScene(new Intro(), "Intro");
 
 	while (running)
 	{
@@ -47,10 +52,12 @@ int main(int argc, char** argv)
 					nextFrame = SDL_GetPerformanceCounter();
 					break;
 				}
-			// Input HERE
-			// Scene.Input(event);
+			case SDL_KEYDOWN:
+				// Input HERE
+				manager->InputScene(&event);
 				break;
 			}
+			
 		}
 		if (!paused && SDL_GetPerformanceCounter() >= nextFrame)
 		{
@@ -58,7 +65,7 @@ int main(int argc, char** argv)
 			do
 			{ 
 				// Update HERE
-				//Scene.Update(elapsedTime);
+				manager->UpdateScene(&elapsedTime);
 
 				nextFrame += SDL_GetPerformanceFrequency() / TARGETFPS; /* max fps */
 			} while (SDL_GetPerformanceCounter() >= nextFrame && framesSkipped++ < MAXFRAMESKIP);/* maximum frames to skip */
@@ -69,7 +76,7 @@ int main(int argc, char** argv)
 			SDL_RenderClear(r);
 			
 			// Rendering HERE
-			//Scene.Render(r);
+			manager->RenderScene(r);
 
 			// Present
 			SDL_RenderPresent(r);
