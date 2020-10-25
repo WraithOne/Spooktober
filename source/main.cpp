@@ -3,50 +3,87 @@
 #include <stdio.h>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 1080;
+const int SCREEN_HEIGHT = 720;
+const unsigned TARGETFPS = 60;
+const char* WINDOWTITLE = "Spooktober by Dark Abyss";
+const int MAXFRAMESKIP = 5;
 
-int main(int argc, char* args[])
+int main(int argc, char** argv)
 {
-    //The window we'll be rendering to
-    SDL_Window* window = NULL;
+	// SDL every System
+	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Window* w = SDL_CreateWindow(WINDOWTITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+	SDL_Renderer* r = SDL_CreateRenderer(w, -1, 0/*SDL_RENDERER_PRESENTVSYNC*/);
 
-    //The surface contained by the window
-    SDL_Surface* screenSurface = NULL;
+	// Mixer only OGG files
+	Mix_Init(MIX_INIT_OGG);
+	//Image only PNG files
+	IMG_Init(IMG_INIT_PNG);
 
-    //Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-    }
-    else
-    {
-        //Create window
-        window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-        if (window == NULL)
-        {
-            printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-        }
-        else
-        {
-            //Get window surface
-            screenSurface = SDL_GetWindowSurface(window);
+	SDL_bool paused = SDL_FALSE, running = SDL_TRUE;
+	Uint64 nextFrame = SDL_GetPerformanceCounter();
+	
 
-            //Fill the surface white
-            SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
+	while (running)
+	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event))
+		{
+			switch (event.type)
+			{
+			case SDL_QUIT:
+				running = SDL_FALSE;
+				paused = SDL_TRUE;
+				break;
+			case SDL_WINDOWEVENT:
+				switch (event.window.event)
+				{
+				case SDL_WINDOWEVENT_FOCUS_LOST:
+					paused = SDL_TRUE;
+					break;
+				case SDL_WINDOWEVENT_FOCUS_GAINED:
+					paused = SDL_FALSE;
+					nextFrame = SDL_GetPerformanceCounter();
+					break;
+				}
+			// Input HERE
+			// Scene.Input(event);
+				break;
+			}
+		}
+		if (!paused && SDL_GetPerformanceCounter() >= nextFrame)
+		{
+			int framesSkipped = 0;
+			do
+			{ 
+				// Update HERE
+				//Scene.Update(elapsedTime);
 
-            //Update the surface
-            SDL_UpdateWindowSurface(window);
+				nextFrame += SDL_GetPerformanceFrequency() / TARGETFPS; /* max fps */
+			} while (SDL_GetPerformanceCounter() >= nextFrame && framesSkipped++ < MAXFRAMESKIP);/* maximum frames to skip */
+			
+			// ClearColor
+			SDL_SetRenderDrawColor(r, 0x00, 0x00, 0x00, 0xFF);
+			// Clear Screen
+			SDL_RenderClear(r);
+			
+			// Rendering HERE
+			//Scene.Render(r);
 
-            //Wait two seconds
-            SDL_Delay(2000);
-        }
-    }
-    //Destroy window
-    SDL_DestroyWindow(window);
+			// Present
+			SDL_RenderPresent(r);
+		}
+		else
+			SDL_Delay(1); /* give back CPU time*/
+	}
 
-    //Quit SDL subsystems
-    SDL_Quit();
+	// Shutdown
+	Mix_Quit();
+	IMG_Quit();
+	SDL_DestroyRenderer(r);
+	SDL_DestroyWindow(w);
+	SDL_Quit();
 
-    return 0;
+	return 0;
 }
