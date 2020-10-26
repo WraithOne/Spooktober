@@ -11,6 +11,4 @@ Using:
 
 ---
 Assets:  
-[Graveyard Tileset](https://angrysnail.itch.io/pixel-art-graveyard-tileset)  
-[Twelve 16x18 RPG character sprites](https://opengameart.org/content/twelve-16x18-rpg-character-sprites-including-npcs-and-elementals)  
-[Halloween gift for OGA](https://opengameart.org/content/halloween-gift-for-oga)  
+
